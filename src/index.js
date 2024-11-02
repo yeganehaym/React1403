@@ -8,19 +8,13 @@ import {RatingBar} from "./RatingBar";
 import {Test} from "./Test";
 import {Buttons} from "./Buttons";
 import {Like} from "./Like";
+import {Login} from "./Login";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-      <Buttons />
-      <Buttons />
-      <Buttons />
-      <Buttons />
-      <Like/>
-      <Like/>
-      <Like/>
-      <Like/>
+      <Login/>
   </>
 );
 

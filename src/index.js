@@ -9,12 +9,14 @@ import {Test} from "./Test";
 import {Buttons} from "./Buttons";
 import {Like} from "./Like";
 import {Login} from "./Login";
+import {Counter2} from "./Counter2";
+import {Login2} from "./Login2";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-      <Login/>
+     <Login/>
   </>
 );
 

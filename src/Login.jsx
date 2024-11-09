@@ -1,29 +1,51 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import {useState} from "react";
-
+import {MyInput} from "./MyInput";
 
 export function Login(){
 
-
-
-    const [login,setLogin]=useState({
+    const [login,setLogin] = useState({
+        first_name:"",
+        last_name:"",
         username:'',
-        password:''
+        password:'',
     });
 
+    function  handleLogin(e){
+        const copy={...login};
+        const name=e.target.name;
+        copy[name]=e.target.value;
+        setLogin(copy)
+    }
 
-    return<>
-    <h1>Login</h1>
-
+    return <>
         <form>
             <div>
-                <lable>Username:</lable>
-                <input type={"text"} className={"form-control"} value={login.username} onInput={e=>setLogin({username: e.target.value})}/>
+                <MyInput  name={"first_name"} placeholder={"Name"} value={login.first_name}
+                       onInput={e=>handleLogin(e)}
+                          icon={"#"}
+                      />
+
+            </div>
+            <div>
+                <MyInput placeholder={"Family"} value={login.last_name} name={"last_name"}
+                       onInput={e=>handleLogin(e)}
+                         icon={"!"}
+                      />
+
             </div>
 
             <div>
-                <lable>Password:</lable>
-                <input type={"password"} className={"form-control"} value={login.password} onInput={e=>setLogin({password:e.target.value})}/>
+                <MyInput   placeholder={"Username"} value={login.username} name={"username"}
+                       onInput={e=>handleLogin(e)}
+                           icon={"@"}
+                       />
+
+            </div>
+            <div className={"mt-3"}>
+                <input type={"password"} className={"form-control"} placeholder={"Password"} value={login.password}
+                       name={"password"}
+                       onInput={e=>handleLogin(e)}
+                       />
             </div>
             <div className={"mt-3"}>
                 <button type={"submit"} className={"btn btn-primary"}>Login</button>

@@ -11,12 +11,20 @@ import {Like} from "./Like";
 import {Login} from "./Login";
 import {Counter2} from "./Counter2";
 import {Login2} from "./Login2";
+import {AdminLayout} from "./Layouts/AdminLayout";
+import {NewCat} from "./NewCat";
+import {NewFood} from "./NewFood";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-     <Login/>
+    <AdminLayout>
+        <NewCat>
+        </NewCat>
+
+        <NewFood></NewFood>
+    </AdminLayout>
   </>
 );
 

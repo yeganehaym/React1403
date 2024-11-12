@@ -17,8 +17,8 @@ export function Counter2(props){
         <span>{count}</span>
 
         <div>
-            <button className={"btn btn-primary"} onClick={add}>Add</button>
-            <button className={"btn btn-danger"} onClick={Dec}>Dec</button>
+            <button type={"button"} className={"btn btn-primary"} onClick={add}>Add</button>
+            <button type={"button"} className={"btn btn-danger"} onClick={Dec}>Dec</button>
         </div>
     </>
 }

@@ -1,0 +1,269 @@
+@import "/public/iransans/css/fontiran.css";
+
+:root {
+    --bg-color: #0F172A;
+    --second-color: #F59E0B;
+    --food-material: #4E596D;
+    --dim-white: #BCBCBC;
+    --bg-raduis: 15%;
+}
+
+*{
+    font-family: 'iransans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: white;
+}
+
+.top-bar {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    color: var(--second-color);
+    font-size: 20pt;
+    font-weight: bold;
+    text-align: center;
+    z-index: 100000000000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.bar a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.top-bar.scrolled {
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bg-parent {
+    position: relative;
+    height: 500px;
+}
+
+.bg {
+    height: 500px;
+    background-image: url('/public/images/pizza2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    animation: fadeIn 1s;
+}
+
+.bg-login {
+    min-height: 100vh;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/public/images/bg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: fadeIn 1s;
+}
+
+.panel {
+    background-color: var(--bg-color); /* adjust the background color as needed */
+    padding: 20px; /* adjust the padding as needed */
+    border: 1px solid var(--second-color); /* adjust the border as needed */
+    border-radius: 10px; /* adjust the border radius as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* adjust the box shadow as needed */
+}
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; /* adjust the width as needed */
+    background-color: var(--bg-color); /* adjust the background color as needed */
+    padding: 20px; /* adjust the padding as needed */
+    border: 1px solid var(--second-color); /* adjust the border as needed */
+    border-radius: 10px; /* adjust the border radius as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* adjust the box shadow as needed */
+}
+
+.text {
+    font-size: 30pt;
+    font-weight: bold;
+    position: absolute;
+}
+
+.text1 {
+    top: 15%;
+    right: 12%;
+}
+
+.text2 {
+    top: 35%;
+    right: 20%;
+}
+
+.text3 {
+    top: 55%;
+    right: 30%;
+}
+
+.bg::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.cats {
+    margin-top: -75px;
+}
+
+.cat-item {
+    position: relative;
+    border-radius: 25px;
+    width: 250px;
+    height: 150px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 20pt;
+    overflow: hidden;
+}
+
+.cat-item-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+    cursor: pointer;
+}
+
+.cat-item-image:hover {
+    transform: scale(1.5);
+    transition: all 1s;
+}
+
+
+.cat-item-image::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.56);
+    border-radius: 25px;
+}
+
+.cat-item-image > span {
+    z-index: 10000;
+}
+
+.food-item {
+    display: flex;
+    margin: 50px 10px 10px;
+}
+
+.food-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.food-item img.food:hover {
+    transform: rotate(45deg);
+    transition: all 1s;
+}
+
+.food-item img.cafe:hover {
+    transform: rotateY(180deg);
+    transition: all 1s;
+}
+
+.materials {
+    color: var(--food-material);
+}
+
+
+.price {
+    color: var(--second-color);
+    font-weight: bold;
+    text-align: left;
+}
+
+.gmap {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+.gmap iframe {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.footer-info {
+    color: var(--food-material);
+    font-size: 16pt;
+}
+
+.line {
+    margin: 25px 15px;
+    border-top-width: 1px;
+    border-top-color: var(--food-material);
+    border-top-style: solid;
+}
+
+.space {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+.footer {
+    text-align: center;
+    color: var(--food-material);
+    text-decoration: none;
+}
+
+.footer-login {
+    width: 100%;
+    text-align: center;
+    color: var(--food-material);
+    text-decoration: none;
+    position: relative;
+    bottom: 20px;
+    margin: 39px 0 0 0;
+}

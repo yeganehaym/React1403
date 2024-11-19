@@ -2,8 +2,12 @@
 import {useState} from "react";
 import Joi from 'joi'
 import {messages} from "./Joi/Joi_Translations";
+import {useNavigate, useParams} from "react-router-dom";
 
 export function NewFood(){
+
+    var params=useParams();
+    var navigate=useNavigate();
 
 const [food, setFood] = useState({
     id:0,
@@ -30,6 +34,7 @@ function handleInput(e){
             materials:Joi.string().required().label('مواد تشکیل دهنده غذا'),
             price:Joi.string().required().label('مبلغ'),
             order:Joi.number().required().min(1).max(100).label('ترتیب نمایش'),
+
         })
 
         const result=schema.validate(food,{
@@ -48,13 +53,14 @@ function handleInput(e){
             return;
         }
 
-        alert('OK')
+        navigate("/login")
 
 
     }
     return <>
 
         <div className="panel mt-5">
+
             <form method="post" onSubmit={handleSubmit}>
                 {
                     errors && errors.length>0 &&

@@ -14,17 +14,47 @@ import {Login2} from "./Login2";
 import {AdminLayout} from "./Layouts/AdminLayout";
 import {NewCat} from "./NewCat";
 import {NewFood} from "./NewFood";
+import {BrowserRouter, Routes,Route} from "react-router-dom";
+import {NotFound} from "./NotFound";
+import {FoodList} from "./FoodList";
+import {CatList} from "./CatList";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <AdminLayout>
-        <NewCat>
-        </NewCat>
+   <BrowserRouter>
+       <Routes>
 
-        <NewFood></NewFood>
-    </AdminLayout>
+           <Route path={"/counter/v1"} element={<Counter></Counter>}></Route>
+           <Route path={"/counter/v2"} element={<Counter2></Counter2>}></Route>
+           <Route path={"/"} element={ <AdminLayout>
+               <NewFood></NewFood>
+           </AdminLayout>}></Route>
+           <Route path={"/foods/new"} element={ <AdminLayout>
+               <NewFood></NewFood>
+           </AdminLayout>}></Route>
+
+           <Route path={"/foods/edit/:id"} element={ <AdminLayout>
+               <NewFood></NewFood>
+           </AdminLayout>}></Route>
+
+           <Route path={"/cats/new"} element={ <AdminLayout>
+               <NewCat></NewCat>
+           </AdminLayout>}></Route>
+
+           <Route path={"/cats/edit/:id"} element={ <AdminLayout>
+               <NewCat></NewCat>
+           </AdminLayout>}></Route>
+
+
+           <Route path={"/login"} element={<AdminLayout><Login></Login></AdminLayout>}></Route>
+           <Route path={"/foods/list"} element={<AdminLayout><FoodList></FoodList></AdminLayout>}></Route>
+           <Route path={"/cats/list"} element={<AdminLayout><CatList></CatList></AdminLayout>}></Route>
+           <Route path={"*"} element={<NotFound></NotFound>}></Route>
+
+       </Routes>
+   </BrowserRouter>
   </>
 );
 

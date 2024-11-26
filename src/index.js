@@ -18,6 +18,8 @@ import {BrowserRouter, Routes,Route} from "react-router-dom";
 import {NotFound} from "./NotFound";
 import {FoodList} from "./FoodList";
 import {CatList} from "./CatList";
+import {Calendar} from "./Calendar";
+import {Home} from "./Components/Home/Home";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -28,9 +30,7 @@ root.render(
 
            <Route path={"/counter/v1"} element={<Counter></Counter>}></Route>
            <Route path={"/counter/v2"} element={<Counter2></Counter2>}></Route>
-           <Route path={"/"} element={ <AdminLayout>
-               <NewFood></NewFood>
-           </AdminLayout>}></Route>
+           <Route path={"/"} element={ <Home></Home>}></Route>
            <Route path={"/foods/new"} element={ <AdminLayout>
                <NewFood></NewFood>
            </AdminLayout>}></Route>
@@ -51,7 +51,11 @@ root.render(
            <Route path={"/login"} element={<AdminLayout><Login></Login></AdminLayout>}></Route>
            <Route path={"/foods/list"} element={<AdminLayout><FoodList></FoodList></AdminLayout>}></Route>
            <Route path={"/cats/list"} element={<AdminLayout><CatList></CatList></AdminLayout>}></Route>
+
+           <Route path={"/cal"} element={<Calendar></Calendar>}></Route>
+
            <Route path={"*"} element={<NotFound></NotFound>}></Route>
+
 
        </Routes>
    </BrowserRouter>

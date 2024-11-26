@@ -1,6 +1,10 @@
+import {Categories} from "./Components/Category/Categories";
+
 export function FoodList(){
 
     return <>
+        <Categories/>
+
         <div className="mt-5">
             <table className="table table-bordered table-striped">
                 <thead>

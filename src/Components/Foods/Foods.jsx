@@ -10,7 +10,7 @@ export function Foods(){
     useEffect(function (){
         const f=GetFoods();
         setFoods(f)
-    })
+    },[])
 
     return <>
         <div className="container mt-5">

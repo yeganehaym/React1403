@@ -6,8 +6,8 @@ export function Categories(props){
 
     const [categories, setCategories] = useState([]);
 
-    useEffect(function(){
-        const cats=GetCats(props.filter?.id??1);
+    useEffect(async function(){
+        const cats=await GetCats();
         setCategories(cats)
     },[])
 

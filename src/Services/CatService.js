@@ -1,53 +1,16 @@
-export function GetCats(filter)
+import {client} from "./AppAxios";
+
+export async function GetCats(filter)
 {
-    if(filter===1)
-    return [
-        {
-            id:1,
-            title:'پیتزا ایتالیایی',
-            image:'1.jpg'
-        },
-        {
-            id:2,
-            title:'سالاد',
-            image:'f2.jpg'
-        },
-        {
-            id:3,
-            title:'فست فود',
-            image:'2584ao0ei.jpg'
-        },
-        {
-            id:4,
-            title:'غذای ایرانی',
-            image:'f3.jpg'
-        },
-        {
-            id:5,
-            title:'کافه',
-            image:'f5.jpg'
-        }
-    ]
+    var result=await client.get("/CatList");
+    return result.data;
+}
 
-    if(filter==2)
-        return [
-            {
-                id:1,
-                title:'خورشت سبزی',
-                image:'1.jpg'
-            },
-            {
-                id:2,
-                title:'سالاد ماکارونی',
-                image:'f2.jpg'
-            },
-            {
-                id:3,
-                title:'سالاد سزار',
-                image:'2584ao0ei.jpg'
-            },
-
-        ]
+export async function NewCat(cat)
+{
+    var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJtZW51IiwiaXNzIjoibWVudS5jb20iLCJpYXQiOjE3MzI5ODYzNzYsIm5hbWVpZCI6IjEiLCJuYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3NlcmlhbG51bWJlciI6ImQzMDBiMGY1LWIiLCJuYmYiOjE3MzI5ODYzNzYsImV4cCI6MTczMjk4ODE3NiwiYXVkIjoiYW55In0._yjPQ0zp5UULQbFAlnXn8E2WmCnkwQVNhDp0h2-6724";
+   var response= await client.post("/addorupdatecategory",cat)
+    return response.data;
 }
 
 export function GetFilters(){

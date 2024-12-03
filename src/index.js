@@ -3,14 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {Counter} from "./Counter";
-import {Movies} from "./Movies";
-import {RatingBar} from "./RatingBar";
-import {Test} from "./Test";
-import {Buttons} from "./Buttons";
-import {Like} from "./Like";
-import {Login} from "./Login";
 import {Counter2} from "./Counter2";
-import {Login2} from "./Login2";
 import {AdminLayout} from "./Layouts/AdminLayout";
 import {NewCat} from "./NewCat";
 import {NewFood} from "./NewFood";
@@ -20,6 +13,11 @@ import {FoodList} from "./FoodList";
 import {CatList} from "./CatList";
 import {Calendar} from "./Calendar";
 import {Home} from "./Components/Home/Home";
+import {Login} from "./Components/Login";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css'
+import {Authorize} from "./Components/Authorize";
+import {Logout} from "./Components/Logout";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -39,26 +37,33 @@ root.render(
                <NewFood></NewFood>
            </AdminLayout>}></Route>
 
-           <Route path={"/cats/new"} element={ <AdminLayout>
-               <NewCat></NewCat>
-           </AdminLayout>}></Route>
+           <Route path={"/cats/new"} element={
+                   <AdminLayout>
+                       <NewCat></NewCat>
+                   </AdminLayout>
+           }></Route>
 
            <Route path={"/cats/edit/:id"} element={ <AdminLayout>
                <NewCat></NewCat>
            </AdminLayout>}></Route>
 
 
-           <Route path={"/login"} element={<AdminLayout><Login></Login></AdminLayout>}></Route>
+           <Route path={"/login"} element={<Login></Login>}></Route>
            <Route path={"/foods/list"} element={<AdminLayout><FoodList></FoodList></AdminLayout>}></Route>
-           <Route path={"/cats/list"} element={<AdminLayout><CatList></CatList></AdminLayout>}></Route>
+           <Route path={"/cats/list"} element={
+                   <AdminLayout><CatList></CatList></AdminLayout>
+           }></Route>
 
            <Route path={"/cal"} element={<Calendar></Calendar>}></Route>
+           <Route path={"/logout"} element={<Logout></Logout>}></Route>
 
            <Route path={"*"} element={<NotFound></NotFound>}></Route>
 
 
        </Routes>
    </BrowserRouter>
+
+      <ToastContainer/>
   </>
 );
 

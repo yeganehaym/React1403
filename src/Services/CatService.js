@@ -6,10 +6,41 @@ export async function GetCats(filter)
     return result.data;
 }
 
-export async function NewCat(cat)
+export async function NewCat(cat,callback)
 {
-    var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJtZW51IiwiaXNzIjoibWVudS5jb20iLCJpYXQiOjE3MzI5ODYzNzYsIm5hbWVpZCI6IjEiLCJuYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3NlcmlhbG51bWJlciI6ImQzMDBiMGY1LWIiLCJuYmYiOjE3MzI5ODYzNzYsImV4cCI6MTczMjk4ODE3NiwiYXVkIjoiYW55In0._yjPQ0zp5UULQbFAlnXn8E2WmCnkwQVNhDp0h2-6724";
-   var response= await client.post("/addorupdatecategory",cat)
+    var fd=new FormData();
+    fd.append("id",cat.id);
+    fd.append("name",cat.name);
+    fd.append("order",cat.order);
+    fd.append("file",cat.file);
+
+    const startTime=new Date();
+
+   var response= await client.post("/addorupdatecategorybyform",fd,{
+       contentType:"multipart/form-data",
+       onUploadProgress:e=>{
+
+           const {loaded,total}=e;
+
+           const progress=loaded*100/total;
+           const elapsedTime=(((new Date())-startTime)/1000);
+           const uploadSpeed=loaded/elapsedTime;
+           const remainingTime=total/uploadSpeed - elapsedTime;
+
+           const amar={
+               progress,
+               remainingTime,
+               uploadSpeed,
+               elapsedTime,
+               loaded,
+               total
+           }
+
+           console.log(amar)
+           callback(amar);
+       }
+
+   })
     return response.data;
 }
 

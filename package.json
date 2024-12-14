@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
+    "convert-size": "^1.2.1",
     "joi": "^17.13.3",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",

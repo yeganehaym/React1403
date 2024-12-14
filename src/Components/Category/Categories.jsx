@@ -6,9 +6,15 @@ export function Categories(props){
 
     const [categories, setCategories] = useState([]);
 
-    useEffect(async function(){
-        const cats=await GetCats();
-        setCategories(cats)
+    useEffect(function(){
+
+        async function fetchData()
+        {
+            const cats=await GetCats();
+            setCategories(cats)
+        }
+
+        fetchData()
     },[])
 
     return <>

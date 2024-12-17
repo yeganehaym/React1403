@@ -18,6 +18,10 @@ import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.min.css'
 import {Authorize} from "./Components/Authorize";
 import {Logout} from "./Components/Logout";
+import {MouseLocation} from "./Components/Shared/MouseLocation";
+import {Cursor} from "./Components/Shared/Cursor";
+import {WebStatus} from "./Components/Shared/WebStatus";
+import {GeoLocation} from "./Components/GeoLocation";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -57,12 +61,16 @@ root.render(
            <Route path={"/cal"} element={<Calendar></Calendar>}></Route>
            <Route path={"/logout"} element={<Logout></Logout>}></Route>
 
+           <Route path={"/mouse"} element={<MouseLocation></MouseLocation>}/>
+           <Route path={"/cursor"} element={<Cursor></Cursor>}/>
+           <Route path={"/geo"} element={<GeoLocation></GeoLocation>}/>
            <Route path={"*"} element={<NotFound></NotFound>}></Route>
 
 
        </Routes>
    </BrowserRouter>
 
+      <WebStatus />
       <ToastContainer/>
   </>
 );

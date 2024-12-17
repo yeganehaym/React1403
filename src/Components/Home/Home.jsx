@@ -5,7 +5,7 @@ import {Foods} from "../Foods/Foods";
 export function Home(){
     return <>
         <div className="top-bar">
-            <span>سفره خانه سنتی سرای امیر</span>
+            <span>سفره خانه سنتی سرای امیر {process.env.REACT_APP_Text}</span>
         </div>
 
         <div className="bg-parent">

@@ -35,6 +35,7 @@ export function Login(){
     return <>
         <div className={"bg-login"}>
             <div className="login-box">
+                {process.env.REACT_APP_Text}
                 <form method="post" onSubmit={handleSubmit}>
                     <div className="form-group mb-3">
                         <label htmlFor="floatingInput">نام کاربری</label>

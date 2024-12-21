@@ -55,3 +55,16 @@ export function GetFilters(){
         }
     ]
 }
+
+export async function removeCat(id){
+
+    var result=await client.post("/deleteCat?id="+id);
+    return result.data.success==true;
+}
+
+export async function getCat(id){
+    var items=await GetCats();
+
+    var oneItem=items.find(item=>item.id==id);
+    return oneItem;
+}

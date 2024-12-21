@@ -1,8 +1,9 @@
 import Joi, {func} from "joi";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {messages} from "./Joi/Joi_Translations";
 import * as catService from "./Services/CatService";
 import * as cvt from "convert-size"
+import {useParams} from "react-router-dom";
 
 export function NewCat(props){
 
@@ -23,6 +24,17 @@ export function NewCat(props){
         loaded:0,
         total:0
     })
+
+    const params=useParams();
+
+    useEffect(()=>{
+
+        const fetch=async()=>{
+            const newCat=catService.getCat(params.id)
+            setCat(newCat)
+        }
+        fetch()
+    },[])
 
     const [errors,setErrors]=useState([]);
 

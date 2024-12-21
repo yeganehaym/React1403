@@ -22,6 +22,7 @@ import {MouseLocation} from "./Components/Shared/MouseLocation";
 import {Cursor} from "./Components/Shared/Cursor";
 import {WebStatus} from "./Components/Shared/WebStatus";
 import {GeoLocation} from "./Components/GeoLocation";
+import {Parent} from "./Components/TestUseContext/Parent";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -64,6 +65,7 @@ root.render(
            <Route path={"/mouse"} element={<MouseLocation></MouseLocation>}/>
            <Route path={"/cursor"} element={<Cursor></Cursor>}/>
            <Route path={"/geo"} element={<GeoLocation></GeoLocation>}/>
+           <Route path={"/parent"} element={<Parent></Parent>}/>
            <Route path={"*"} element={<NotFound></NotFound>}></Route>
 
 

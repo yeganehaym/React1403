@@ -21,12 +21,17 @@ instance.interceptors.response.use(null,error=>{
     }
     alert('خطای اتصال به سرور')
 })
-const token=localStorage.getItem('token');
-instance.defaults.headers.common["authorization"]="Bearer " + token;
+
+
 
 export const client={
     get:instance.get,
     post:instance.post,
     put:instance.put,
     delete:instance.delete
+}
+
+export const setToken=()=>{
+    const token=localStorage.getItem('token');
+    instance.defaults.headers.common["authorization"]="Bearer " + token;
 }

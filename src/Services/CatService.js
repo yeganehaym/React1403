@@ -1,5 +1,6 @@
-import {client} from "./AppAxios";
+import {client, setToken} from "./AppAxios";
 
+setToken()
 export async function GetCats(filter)
 {
     var result=await client.get("/CatList");

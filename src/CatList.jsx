@@ -3,7 +3,7 @@ import * as catServices from "./Services/CatService";
 import {Link} from "react-router-dom";
 import {toast} from "react-toastify";
 
-export function CatList(){
+function CatList(){
 
     const [list,setList]=useState([]);
 
@@ -57,3 +57,5 @@ export function CatList(){
         </div>
     </>
 }
+
+export default CatList;

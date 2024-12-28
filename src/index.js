@@ -27,6 +27,8 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 import {Reducer} from "./Reducer";
 import ReduxTest from "./Components/ReduxTest";
+import {ChangePass} from "./Components/User/ChangePass";
+import {WebInfo} from "./Components/WebInfo";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -77,6 +79,18 @@ root.render(
 
                    <AdminLayout>
                        <ReduxTest></ReduxTest>
+                   </AdminLayout>
+               }/>
+
+               <Route path={"/password"} element={
+                   <AdminLayout>
+                       <ChangePass></ChangePass>
+                   </AdminLayout>
+               }/>
+
+               <Route path={"/webinfo"} element={
+                   <AdminLayout>
+                       <WebInfo></WebInfo>
                    </AdminLayout>
                }/>
                <Route path={"*"} element={<NotFound></NotFound>}></Route>

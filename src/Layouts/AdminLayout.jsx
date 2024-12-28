@@ -24,7 +24,8 @@ export function AdminLayout(props){
                         <li><Link to="/cats/list">لیست گروه بندی</Link></li>
                         <li><Link to="/foods/new">افزودن غذا</Link></li>
                         <li><Link to="/foods/list">لیست غذا</Link></li>
-                        <li><Link to="/counters/v1">تغییر کلمه عبور</Link></li>
+                        <li><Link to="/password">تغییر کلمه عبور</Link></li>
+                        <li><Link to="/webinfo">اطلاعات سایت</Link></li>
                         <li><Link to="/redux-test">ریداکس</Link></li>
                         <li><Link to="/logout">خروج</Link></li>
                     </ul>

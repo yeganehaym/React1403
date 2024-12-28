@@ -1,16 +1,20 @@
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Joi from 'joi'
 import {messages} from "./Joi/Joi_Translations";
-import {useNavigate, useParams} from "react-router-dom";
+import {Await, useNavigate, useParams} from "react-router-dom";
+import {GetCats} from "./Services/CatService";
+import * as foodServices from "./Services/FoodService";
 
 export function NewFood(){
 
     var params=useParams();
     var navigate=useNavigate();
 
+    const [cats,setCats]=useState([]);
 const [food, setFood] = useState({
     id:0,
+    catId:0,
     name:'',
     order:1,
     price:'',
@@ -18,6 +22,8 @@ const [food, setFood] = useState({
 });
 
 const [errors,setErrors] = useState([]);
+    const [sending, setSending]=useState(false);
+
 
 function handleInput(e){
     const copy={...food};
@@ -25,9 +31,11 @@ function handleInput(e){
     setFood(copy);
 }
 
-    function handleSubmit(e)
+    async function handleSubmit(e)
     {
         e.preventDefault();
+
+        setSending(true);
 
         const schema=Joi.object({
             name:Joi.string().required().label('نام'),
@@ -50,13 +58,40 @@ function handleInput(e){
         {
             const err=result.error.details.map(d=>d.message)
             setErrors(err)
+            setSending(false);
             return;
         }
 
-        navigate("/login")
 
+        const data=await foodServices.newFoodByForm(food);
+
+        if(data.success==true)
+        {
+            alert('Ok');
+            setFood({...food,name:'',order: 1,materials: '',price: ''})
+        }
+        else{
+            alert('Error')
+        }
+        setSending(false);
 
     }
+
+
+    useEffect(()=>{
+
+        async function fetch(){
+            const items=await GetCats();
+            const newItems=items.map(i=>({id:i.id,title:i.name}));
+            setCats(newItems);
+            if(newItems.length>0)
+                setFood({...food,catId:newItems[0].id})
+        }
+
+
+
+        fetch()
+    },[])
     return <>
 
         <div className="panel mt-5">
@@ -74,10 +109,11 @@ function handleInput(e){
                 }
                 <div className="form-group">
                     <label>دسته بندی </label>
-                    <select className={"form-select"}>
-                        <option>فست فود</option>
-                        <option>کافه</option>
-                        <option>سالاد</option>
+                    <select className={"form-select"} onChange={e=>setFood({...food,catId:e.target.value})}>
+                        {
+                            cats.map(c => <option value={c.id}>{c.title}</option>)
+                        }
+
                     </select>
 
                 </div>
@@ -105,12 +141,12 @@ function handleInput(e){
                 </div>
                 <div className="form-group">
                     <label>تصویر</label>
-                    <input type="file" className="form-control"/>
+                    <input type="file" onChange={e=>setFood({...food,file:e.target.files[0]})} className="form-control"/>
 
                 </div>
 
                 <div className="form-group mt-3">
-                    <button className="btn btn-secondary" type="submit">ثبت</button>
+                    <button className="btn btn-secondary" type="submit" disabled={sending}>ثبت</button>
                 </div>
 
 

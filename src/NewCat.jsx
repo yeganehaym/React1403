@@ -30,8 +30,13 @@ export function NewCat(props){
     useEffect(()=>{
 
         const fetch=async()=>{
-            const newCat=catService.getCat(params.id)
-            setCat(newCat)
+
+            if(params.id!=undefined)
+            {
+                const newCat=await catService.getCat(params.id)
+                setCat(newCat)
+            }
+
         }
         fetch()
     },[])
@@ -76,7 +81,7 @@ export function NewCat(props){
          if(data.success==true)
          {
              alert('Ok');
-             setCat({name:'',order: 1})
+             setCat({...cat,name:'',order: 1})
          }
          else{
              alert('Error')

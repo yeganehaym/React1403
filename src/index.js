@@ -29,7 +29,8 @@ import {Reducer} from "./Reducer";
 import ReduxTest from "./Components/ReduxTest";
 import {ChangePass} from "./Components/User/ChangePass";
 import {WebInfo} from "./Components/WebInfo";
-
+import "./I18n";
+import {Translation} from "./Translation";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -93,6 +94,8 @@ root.render(
                        <WebInfo></WebInfo>
                    </AdminLayout>
                }/>
+
+               <Route path={"/translation"} element={<Translation></Translation>}/>
                <Route path={"*"} element={<NotFound></NotFound>}></Route>
 
 

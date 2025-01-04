@@ -5,6 +5,6 @@ import {FinancialReducer} from "./FinancialReducer";
 
 export const Reducer=combineReducers({
     theme:ThemeReducer,
-    food:FoodReducer,
+    foods:FoodReducer,
     financial:FinancialReducer
 })

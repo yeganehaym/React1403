@@ -5,6 +5,7 @@ import {messages} from "./Joi/Joi_Translations";
 import {Await, useNavigate, useParams} from "react-router-dom";
 import {GetCats} from "./Services/CatService";
 import * as foodServices from "./Services/FoodService";
+import {getFood} from "./Services/FoodService";
 
 export function NewFood(){
 
@@ -86,6 +87,12 @@ function handleInput(e){
             setCats(newItems);
             if(newItems.length>0)
                 setFood({...food,catId:newItems[0].id})
+
+            if(params.id!=undefined && params.id>0)
+            {
+                const f=await getFood(params.id);
+                setFood(f)
+            }
         }
 
 

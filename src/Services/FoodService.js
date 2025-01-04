@@ -1,8 +1,16 @@
 import {client, setToken} from "./AppAxios";
+import {GetCats} from "./CatService";
 
 
-export function GetFoods() {
-return [];
+export async function GetFoods(catId) {
+
+    try {
+        const result=await client.get('/foodlist?catId=' + catId);
+        return result.data;
+    }
+    catch (error) {
+        return [];
+    }
 }
 export async function newFood(food){
 
@@ -52,4 +60,30 @@ export async  function newFoodByForm(food,callback){
     });
 
     return response.data;
+}
+
+export async function removeFood(id){
+    const result=client.post(`/deletefood?id=${id}`, {})
+    return result.data && result.data.success==true;
+}
+
+export  async function getAllFoods(){
+
+    var cats=await GetCats();
+    var allFoods=[];
+    for(let i=0;i<cats.length;i++){
+        var cat=cats[i];
+        var f=await GetFoods(cat.id);
+        for(var j=0;j<f.length;j++){
+            allFoods.push(f[j]);
+        }
+    }
+
+    return allFoods;
+}
+
+export async function getFood(id){
+    var foods=await getAllFoods();
+    return foods.find(f=>f.id==id);
+
 }

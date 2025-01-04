@@ -4,7 +4,7 @@ export function Food(props){
         <div className="col-lg-4">
         <div className="food-item">
             <div className="col-auto">
-                <img className="food" src={"http://localhost:3000/images/" + props.food.image}/>
+                <img className="food" src="/images/4 (1).jpg"/>
             </div>
             <div className="col ms-3 d-flex flex-column justify-content-between">
                 <div>

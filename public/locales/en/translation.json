@@ -1,0 +1,4 @@
+{
+    "Hello":"Hi",
+    "Age": "Your age Must be between {{age1}} and {{age2}}"
+}
